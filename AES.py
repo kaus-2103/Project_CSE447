@@ -23,7 +23,6 @@ class AESCipher:
         return unpad(self.cipher.decrypt(raw[AES.block_size:]), AES.block_size)
     
     def encryptECB(self,data):
-
         self.cipher = AES.new(self.key, AES.MODE_ECB)
         return b64encode(self.cipher.encrypt(pad(data.encode('utf-8'), 
             AES.block_size)))

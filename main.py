@@ -69,8 +69,7 @@ elif ask=='Signature':
     else:
         img_path1 = 'F:\CSE447\Project_CSE447\hidden.png'
         
-        if 'batman' in extract_message(img_path):
-            print('OKAY')
+        print(extract_message(img_path1))
 
 elif ask=="MAC":
     plaintext = str(input('Give me your message: \n >'))
