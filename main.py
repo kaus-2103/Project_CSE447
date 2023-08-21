@@ -1,8 +1,8 @@
 from AES import AESCipher
 from RSA import RSACipher
 from Hashing import Hash
-from Signature import hide_message
-from Signature import extract_message
+from Signature import generation
+from Signature import verification
 from MAC import MAC
 
 
@@ -60,16 +60,13 @@ elif ask == 'Hash':
 
 
 elif ask=='Signature':
-    img_path = 'F:\CSE447\Project_CSE447\cerberus.jpg'
-    ask2 = str(input('Do you want Encryption or Decryption ? \n >'))
-    if ask2 == 'enc':
+    ask2 = str(input('Do you want Generation or Verification ? \n >'))
+    if ask2 == 'gen':
         plaintext = str(input("Give me your plaintext: \n >"))
 
-        print(hide_message(img_path,plaintext))
+        print(generation(plaintext,p=int(input("Give me value of P: \n >")),q=int(input("Give me value of Q: \n >"))))
     else:
-        img_path1 = 'F:\CSE447\Project_CSE447\hidden.png'
-        
-        print(extract_message(img_path1))
+       print(verification(num=int(input("Give me your ciphertext: \n >")),p=int(input("Give me value of P: \n >")),q=int(input("Give me value of Q: \n >"))))
 
 elif ask=="MAC":
     plaintext = str(input('Give me your message: \n >'))

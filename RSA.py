@@ -22,16 +22,18 @@ class RSACipher:
 
     def RSAencrypt(self,message):
         ct = (message ** self.e) % self.n
-        print(f"Encrypted message is {ct}")
-        return ct
+        # print(f"Encrypted message is {ct}")
+        return f"Encrypted message is {ct}"
 
     
     def RSAdecrypt(self,ct):
         mes = (ct ** self.d) % self.n
-        print(f"Decrypted message is {mes}")
-        return mes
+        # print(f"Decrypted message is {mes}")
+        return f"Decrypted message is {mes}"
 
 
 # RSA(p=53, q=59, message=89)
 
 # RSA(p=3, q=7, message=12)
+# print(RSACipher(3,7).RSAencrypt(12))
+# print(RSACipher(3,7).RSAdecrypt(3))
