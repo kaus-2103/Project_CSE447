@@ -20,5 +20,5 @@ class Hash:
 
         return ciphertext
 test = Hash()
-print(test.SHA1('Fuad pocha'))
-print(test.SHA256('Fuad pocha'))
+# print(test.SHA1('Fuad pocha'))
+# print(test.SHA256('Fuad pocha'))

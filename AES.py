@@ -23,9 +23,9 @@ class AESCipher:
         return unpad(self.cipher.decrypt(raw[AES.block_size:]), AES.block_size)
     
     def encryptECB(self,data):
-        iv = get_random_bytes(AES.block_size)
-        self.cipher = AES.new(self.key, AES.MODE_ECB, iv)
-        return b64encode(iv + self.cipher.encrypt(pad(data.encode('utf-8'), 
+
+        self.cipher = AES.new(self.key, AES.MODE_ECB)
+        return b64encode(self.cipher.encrypt(pad(data.encode('utf-8'), 
             AES.block_size)))
     
     def decryptEBC(self,data):
@@ -38,9 +38,9 @@ class AESCipher:
 #     print('TESTING ENCRYPTION')
 #     msg = input('Message...: ')
 #     pwd = input('Password..: ')
-#     print('Ciphertext:', AESCipher(pwd).encrypt(msg).decode('utf-8'))
+#     print('Ciphertext:', AESCipher(pwd).encryptCBC(msg).decode('utf-8'))
 
 #     print('\nTESTING DECRYPTION')
 #     cte = input('Ciphertext: ')
 #     pwd = input('Password..: ')
-#     print('Message...:', AESCipher(pwd).decrypt(cte).decode('utf-8'))
+#     print('Message...:',AESCipher(pwd).encryptECB(cte).decode('utf-8'))

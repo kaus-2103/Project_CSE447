@@ -1,6 +1,9 @@
 from AES import AESCipher
 from RSA import RSACipher
 from Hashing import Hash
+from Signature import hide_message
+from Signature import extract_message
+from MAC import MAC
 
 
 ask = str(input("What Encryption you want to use? \n >"))
@@ -23,6 +26,8 @@ if ask == 'AES':
             print(AESCipher(key).encryptCBC(plaintext).decode("utf-8"))
         else:
             ciphertext = str(input("Give me your ciphertext: \n >"))
+
+
 elif ask =='RSA':
     ask3 = str(input("Do you want Encryption or Decryption ? \n >"))
     if ask3 == 'enc':
@@ -35,6 +40,9 @@ elif ask =='RSA':
         q = int(input("Give me value of Q: \n >"))
         ciphertext = int(input("Give me your ciphertext: \n >"))
         print(RSACipher(p,q).RSAdecrypt(ciphertext))
+
+
+
 elif ask == 'Hash':
     ask2 = str(input('What kind of mode do you want ? \n >'))
     if ask2 == 'SHA1':
@@ -48,5 +56,26 @@ elif ask == 'Hash':
     elif ask2 == "MD5":
         plaintext = str(input("Give me your plaintext: \n >"))
         print(Hash().MD5(plaintext))
+
+
+
+elif ask=='Signature':
+    img_path = 'F:\CSE447\Project_CSE447\cerberus.jpg'
+    ask2 = str(input('Do you want Encryption or Decryption ? \n >'))
+    if ask2 == 'enc':
+        plaintext = str(input("Give me your plaintext: \n >"))
+
+        print(hide_message(img_path,plaintext))
+    else:
+        img_path1 = 'F:\CSE447\Project_CSE447\hidden.png'
+        
+        if 'batman' in extract_message(img_path):
+            print('OKAY')
+
+elif ask=="MAC":
+    plaintext = str(input('Give me your message: \n >'))
+    print(MAC(plaintext))
+
+
 
 
