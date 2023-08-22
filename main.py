@@ -1,8 +1,7 @@
 from AES import AESCipher
 from RSA import RSACipher
 from Hashing import Hash
-from Signature import generation
-from Signature import verification
+from Signature import Signature
 from MAC import MAC
 
 
@@ -64,9 +63,11 @@ elif ask=='Signature':
     if ask2 == 'gen':
         plaintext = str(input("Give me your plaintext: \n >"))
 
-        print(generation(plaintext,p=int(input("Give me value of P: \n >")),q=int(input("Give me value of Q: \n >"))))
+        print(Signature.generation(plaintext))
     else:
-       print(verification(num=int(input("Give me your ciphertext: \n >")),p=int(input("Give me value of P: \n >")),q=int(input("Give me value of Q: \n >"))))
+        ciphertext = str(input("Give me your ciphertext: \n >"))
+        sign = str(input("Give me your signa"))
+        print(Signature.verification(ciphertext,sign))
 
 elif ask=="MAC":
     plaintext = str(input('Give me your message: \n >'))
